@@ -1,5 +1,15 @@
 
 <?php
+session_start();
+
+if (
+    !isset($_SESSION['user_id']) ||
+    !isset($_SESSION['role']) ||
+    $_SESSION['role'] !== 'admin'
+) {
+    header("Location: login.php");
+    exit;
+}
 require __DIR__ . "/config/connection.php";
 require __DIR__ . "/includes/header.php";
 
